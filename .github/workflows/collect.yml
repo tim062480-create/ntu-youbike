@@ -32,6 +32,7 @@ jobs:
     timeout-minutes: 350
     env:
       TZ: Asia/Taipei           # 記錄時間用台灣時間
+      PYTHONUNBUFFERED: "1"     # 程式輸出即時顯示在 Actions 記錄裡
     steps:
       - uses: actions/checkout@v4
 
