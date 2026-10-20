@@ -34,9 +34,9 @@ jobs:
       TZ: Asia/Taipei           # 記錄時間用台灣時間
       PYTHONUNBUFFERED: "1"     # 程式輸出即時顯示在 Actions 記錄裡
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -49,5 +49,5 @@ jobs:
             python src/youbike_collector.py --minutes 30 || true
             git add data
             git commit -q -m "收集資料 $(date '+%m/%d %H:%M')" || true
-            git pull -q --rebase && git push -q || echo "push 失敗，下一輪再試"
+            if git pull -q --rebase; then git push -q || echo "push 失敗，下一輪再試"; else git rebase --abort; echo "合併失敗，下一輪再試"; fi
           done

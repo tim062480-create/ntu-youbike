@@ -23,9 +23,9 @@ jobs:
       TZ: Asia/Taipei
       PYTHONUNBUFFERED: "1"     # 程式輸出即時顯示在 Actions 記錄裡
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -43,6 +43,6 @@ jobs:
           git add index.html data
           git commit -q -m "每天更新網頁 $(date '+%m/%d %H:%M')" || exit 0
           for i in 1 2 3; do
-            git pull -q --rebase && git push -q && break
+            if git pull -q --rebase; then git push -q && break; else git rebase --abort; fi
             sleep 10
           done
