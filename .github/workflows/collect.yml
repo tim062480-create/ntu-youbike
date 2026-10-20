@@ -1,0 +1,52 @@
+# 在 GitHub 的雲端主機上收集 YouBike 資料，不用一直開著自己的電腦。
+#
+# 運作方式：
+#   - 每次執行跑約 5.5 小時，每 2 分鐘抓一次，每 30 分鐘把新資料 commit 回這個 repo
+#   - 每 30 分鐘排程一次；concurrency 讓同時只有一個在跑、下一個排隊，
+#     前一個結束後排隊的馬上接上，所以會一直接力下去
+#   - 資料存在 data/youbike_log/日期.csv（一天一個檔），要分析時 git pull 下來即可
+#
+# 注意：
+#   - repo 要設成 public 才有免費無限的執行時間（private 每月只有 2000 分鐘，不夠）
+#   - GitHub 的排程偶爾會延遲，接力時可能出現幾分鐘的空缺
+#   - 第一次使用要到 repo 的 Settings → Actions → General → Workflow permissions
+#     選「Read and write permissions」，程式才能把資料 commit 回來
+
+name: 收集 YouBike 資料
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:          # 也可以在 Actions 頁面手動按 Run workflow
+
+concurrency:
+  group: youbike-collector
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      TZ: Asia/Taipei           # 記錄時間用台灣時間
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 收資料（11 輪 × 30 分鐘，每輪結束存檔一次）
+        run: |
+          git config user.name "youbike-collector"
+          git config user.email "youbike-collector@users.noreply.github.com"
+          python src/fetch_weather.py || true
+          for i in $(seq 1 11); do
+            python src/youbike_collector.py --minutes 30 || true
+            git add data
+            git commit -q -m "收集資料 $(date '+%m/%d %H:%M')" || true
+            git pull -q --rebase && git push -q || echo "push 失敗，下一輪再試"
+          done
