@@ -72,7 +72,7 @@ def load_zone_status(station_zones):
         with open(path, encoding="utf-8-sig") as f:
             for row in csv.DictReader(f):
                 rent, ret = int(row["可借車數"]), int(row["可還空位"])
-                if rent == 0 and ret == 0:   # 車數不明（2026-10-23 起官方資料整批回傳 0），不算
+                if rent == 0 and ret == 0:   # 車數不明（例如颱風暫停營運時整批回傳 0），不算
                     continue
                 t = datetime.strptime(row["記錄時間"], "%Y-%m-%d %H:%M")
                 for z in station_zones.get(row["站號"], []):

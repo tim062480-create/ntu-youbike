@@ -12,7 +12,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - Python 只用內建套件（urllib、csv、json），沒有 requirements.txt、沒有測試框架、沒有 linter。要確認程式能跑就直接執行它。
 - 各來源的欄位名稱常常不同，用 `get(d, *keys)` 依序嘗試多個欄位名稱。
-- 車數「可借、可還都是 0」視為資料不明（`youbike_collector.counts_valid()`）：不記錄、不驗證、不算歷史平均。2026-10-23 起官方資料曾整批回傳 0。
+- 車數「可借、可還都是 0」視為資料不明（`youbike_collector.counts_valid()`）：不記錄、不驗證、不算歷史平均。例如颱風期間 YouBike 暫停營運時（2026-10-23 起北部整批回傳 0）。
 - Actions 寫回 repo 的方式：`git add` → commit（沒變更就略過）→ `git pull --rebase` 再 push，失敗就重試。`collect.yml` 每 30 分鐘就會 commit 到 main，所以本機 push 前一定要先 pull。
 - `schedule` 只在預設分支（main）上執行；開發分支上的 workflow 靠 `push` 觸發。
 - 雲端開發環境的網路被限制，常連不到 YouBike、OpenStreetMap、Google 等網站；需要外部資料的步驟寫成程式交給 Actions 跑。

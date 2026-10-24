@@ -86,7 +86,7 @@ def to_int(v):
 
 def counts_valid(s):
     """車數能不能用：欄位不見，或可借、可還都是 0 都不算
-    （2026-10-23 01:56 起官方資料整批回傳 0，總車位 50 的站不可能同時沒車又沒空位）"""
+    （例如颱風暫停營運時：2026-10-23 01:56 起北部整批回傳 0）"""
     return s["rent"] is not None and s["return"] is not None and not (s["rent"] == 0 and s["return"] == 0)
 
 
