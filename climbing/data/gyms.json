@@ -1,6 +1,6 @@
 {
  "_說明": "由 scripts/enrich.py 產生，不要手動改；要改資料請改 gyms_seed.json",
- "generated": "2026-10-24 14:16",
+ "generated": "2026-10-24 14:20",
  "checked": "2026-10-24",
  "osm_ok": true,
  "sources": {
@@ -1642,11 +1642,9 @@
    "verify": [
     "是否仍營業、門牌"
    ],
-   "lat": 25.0357722,
-   "lng": 121.4502478,
-   "coord_source": "nominatim:address",
-   "coord_query": "新北市新莊區",
-   "coord_match": "新莊區, 新庄(海山口), 新北市, 臺灣"
+   "lat": null,
+   "lng": null,
+   "coord_source": "none"
   },
   {
    "id": "qianshou-taoyuan",
@@ -2406,11 +2404,9 @@
    "verify": [
     "門牌；行政區（三多商圈站在苓雅與前鎮交界）"
    ],
-   "lat": 22.6203348,
-   "lng": 120.3120375,
-   "coord_source": "nominatim:address",
-   "coord_query": "高雄市",
-   "coord_match": "高雄市, 臺灣"
+   "lat": null,
+   "lng": null,
+   "coord_source": "none"
   },
   {
    "id": "basecamp-zuoying",
@@ -2688,11 +2684,9 @@
    "verify": [
     "門牌"
    ],
-   "lat": 24.743183,
-   "lng": 121.723372,
-   "coord_source": "nominatim:address",
-   "coord_query": "宜蘭縣員山鄉",
-   "coord_match": "員山鄉, 宜蘭縣, 264, 臺灣"
+   "lat": null,
+   "lng": null,
+   "coord_source": "none"
   },
   {
    "id": "yilan-sports",
