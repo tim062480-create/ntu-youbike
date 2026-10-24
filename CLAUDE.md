@@ -45,7 +45,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 資料流：
 1. `climbing/data/gyms_seed.json` 是唯一要手動改的資料。每間館的每個欄位用 `src` 對應到最上面的 `sources` 代號；`verify` 列待確認事項；`osm_keywords` 是比對 OpenStreetMap 名稱用的關鍵字組（每組的字要全部出現在 OSM 名稱裡）。座標不寫，除非要手動覆蓋。
 2. `climbing/scripts/enrich.py` 補座標：先比對 OSM（Overpass），對不到再用 Nominatim 查地址（門牌 → 路段 → 地標 → 館名），輸出 `gyms.json`（網頁讀這個，不要手動改）和 `enrich_report.md`。座標可信度看 `coord_source`。連不到 OSM 時沿用上一次的座標。
-3. `climbing/scripts/youbike_near.py` 用全台 YouBike 站點位置（`apis.youbike.com.tw` 非正式 API；它的車數欄位不是即時資料，不要用）和臺北市開放資料的即時車數（只有臺北市），記錄每館附近站的車數到 `data/youbike_log/`，並算出 `youbike_pattern.json`（站號 → 平日 `wd`／假日 `we` → 30 分鐘時段編號 `slot = 小時*2 + 分//30` → `[平均可借, 平均可還, 樣本數]`）。加 `--stations` 才會更新全台站點位置檔。
+3. `climbing/scripts/youbike_near.py` 抓全台 YouBike（`apis.youbike.com.tw` 非正式 API）和臺北市開放資料，「可借、可還都是 0」視為沒有資料（2026-10-23 起北部資料源都回 0），記錄每館附近站的車數到 `data/youbike_log/`，並算出 `youbike_pattern.json`（站號 → 平日 `wd`／假日 `we` → 30 分鐘時段編號 `slot = 小時*2 + 分//30` → `[平均可借, 平均可還, 樣本數]`）。加 `--stations` 才會更新全台站點位置檔。
 4. 網頁（`index.html`、`app.js`、`style.css`）是純靜態，Leaflet 和 OSM 底圖從 unpkg 載入，沒有建置步驟。`app.js` 讀 `data/` 下的 JSON；交通建議用直線距離乘上繞路係數估時間，路線本身交給 Google 地圖網址（`/maps/dir/?api=1&travelmode=...`）。留言用 giscus（`config.js` 的 `repoId`、`categoryId` 空著時不顯示）。
 
 本機預覽：在 `climbing/` 執行 `python -m http.server 8000`。

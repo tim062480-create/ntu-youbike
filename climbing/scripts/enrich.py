@@ -218,7 +218,7 @@ def main():
                     g["coord_check"] = geo
             elif geo:
                 g.update(geo)
-            elif old.get(g["id"], {}).get("lat") is not None:   # 這次連不到，沿用上次結果
+            elif places is None and old.get(g["id"], {}).get("lat") is not None:   # 這次連不到 OSM，沿用上次結果
                 for k in ("lat", "lng", "coord_source", "coord_query", "coord_match", "osm"):
                     if k in old[g["id"]]:
                         g[k] = old[g["id"]][k]

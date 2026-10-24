@@ -8,7 +8,7 @@ const WALK_M_PER_MIN = 75;     // 步行約 4.5 km/h
 const BIKE_M_PER_MIN = 200;    // 騎 YouBike 約 12 km/h
 const DETOUR = 1.3;            // 直線距離換成實際路程的倍數（估計值）
 const YOUBIKE_MAX_KM = 12;     // 超過這個距離就不建議全程騎 YouBike
-// 臺北市 YouBike 即時資料（全台的 apis.youbike.com.tw 沒有真正的車數）
+// 臺北市 YouBike 即時資料（可借、可還都是 0 時代表資料源沒給數字，不採用）
 const LIVE_URL = "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json";
 
 const state = {
@@ -267,7 +267,7 @@ async function tryLive() {
     for (const s of Array.isArray(raw) ? raw : raw.retVal || []) {
       const rent = Number(s.available_rent_bikes ?? s.sbi);
       const ret = Number(s.available_return_bikes ?? s.bemp);
-      if (Number.isFinite(rent)) counts.set(String(s.sno), { rent, ret, t: s.mday || "" });
+      if (Number.isFinite(rent) && !(rent === 0 && ret === 0)) counts.set(String(s.sno), { rent, ret, t: s.mday || "" });
     }
     if (counts.size) state.live = counts;
   } catch { /* 跨網域被擋或逾時 */ }
