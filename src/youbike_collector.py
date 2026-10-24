@@ -77,8 +77,21 @@ def get(d, *keys, default=None):
     return default
 
 
+def to_int(v):
+    try:
+        return int(v)
+    except (TypeError, ValueError):
+        return None
+
+
+def counts_valid(s):
+    """車數能不能用：欄位不見，或可借、可還都是 0 都不算
+    （2026-10-23 01:56 起官方資料整批回傳 0，總車位 50 的站不可能同時沒車又沒空位）"""
+    return s["rent"] is not None and s["return"] is not None and not (s["rent"] == 0 and s["return"] == 0)
+
+
 def fetch_stations():
-    """從官方 API 抓全部站點，整理成統一格式的字典串列"""
+    """從官方 API 抓全部站點，整理成統一格式的字典串列；車數不明時 rent、return 是 None"""
     req = urllib.request.Request(API_URL, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         raw = json.loads(resp.read().decode("utf-8"))
@@ -96,8 +109,8 @@ def fetch_stations():
                 "lat": float(get(s, "latitude", "lat")),
                 "lng": float(get(s, "longitude", "lng")),
                 "total": int(get(s, "total", "Quantity", "tot", default=0)),
-                "rent": int(get(s, "available_rent_bikes", "sbi", default=0)),
-                "return": int(get(s, "available_return_bikes", "bemp", default=0)),
+                "rent": to_int(get(s, "available_rent_bikes", "sbi")),
+                "return": to_int(get(s, "available_return_bikes", "bemp")),
                 "active": str(get(s, "act", default="1")),
                 "src_time": str(get(s, "srcUpdateTime", "mday", default="")),
             })
@@ -158,17 +171,20 @@ def log_once(target_snos):
     os.makedirs(LOG_DIR, exist_ok=True)
     log_file = os.path.join(LOG_DIR, now.strftime("%Y-%m-%d") + ".csv")
     new_file = not os.path.exists(log_file)
-    count = 0
+    count = skipped = 0
     with open(log_file, "a", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
         if new_file:
             w.writerow(["記錄時間", "星期", "站號", "站名", "總車位", "可借車數", "可還空位", "是否營運", "官方更新時間"])
         for s in stations:
-            if s["sno"] in target_snos:
+            if s["sno"] in target_snos and not counts_valid(s):
+                skipped += 1
+            elif s["sno"] in target_snos:
                 w.writerow([now.strftime("%Y-%m-%d %H:%M"), now.isoweekday(), s["sno"], s["name"],
                             s["total"], s["rent"], s["return"], s["active"], s["src_time"]])
                 count += 1
-    print(f"{now.strftime('%m/%d %H:%M')}  已記錄 {count} 個站")
+    note = f"，{skipped} 站車數不明（可借、可還都是 0）沒有記錄" if skipped else ""
+    print(f"{now.strftime('%m/%d %H:%M')}  已記錄 {count} 個站{note}")
     return stations
 
 

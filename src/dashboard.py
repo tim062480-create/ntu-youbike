@@ -49,7 +49,7 @@ def load_stations():
             rows.append(r)
     live = {}
     try:
-        from youbike_collector import fetch_stations
+        from youbike_collector import counts_valid, fetch_stations
         live = {s["sno"]: s for s in fetch_stations()}
     except Exception as e:
         print(f"（抓不到 YouBike 即時資料，地圖上不會顯示站點：{e}）")
@@ -58,8 +58,9 @@ def load_stations():
         s = live.get(r["站號"])
         out.append({"sno": r["站號"], "name": r["站名"], "zone": r["區域"], "dist": int(r["距離(公尺)"]),
                     "lat": s["lat"] if s else None, "lng": s["lng"] if s else None,
-                    "total": s["total"] if s else None, "rent": s["rent"] if s else None,
-                    "ret": s["return"] if s else None})
+                    "total": s["total"] if s else None,
+                    "rent": s["rent"] if s and counts_valid(s) else None,
+                    "ret": s["return"] if s and counts_valid(s) else None})
     return out
 
 
@@ -368,7 +369,7 @@ function initMap(){
   });
   D.stations.forEach((s,i)=>{ if(s.lat==null) return;
     mk[i]=L.circleMarker([s.lat,s.lng],{radius:9,color:"#fff",weight:2,fillColor:D.colors[s.zone],fillOpacity:.9}).addTo(map)
-      .bindTooltip(`${s.name}（${s.dist} 公尺）`).bindPopup(`<b>${s.name}</b><br>區域：${s.zone}<br>總車位：${s.total}<br>可借：${s.rent}　可還：${s.ret}`);
+      .bindTooltip(`${s.name}（${s.dist} 公尺）`).bindPopup(`<b>${s.name}</b><br>區域：${s.zone}<br>總車位：${s.total}<br>可借：${s.rent??"—"}　可還：${s.ret??"—"}`);
     pts.push([s.lat,s.lng]);
   });
   map.fitBounds(pts,{padding:[30,30]});

@@ -65,14 +65,18 @@ def load_station_zones():
 
 
 def load_zone_status(station_zones):
-    """回傳 {區域: {記錄時間: (區內可借車總數, 區內可還空位總數)}}，只保留區內每一站都有記錄的時間點"""
+    """回傳 {區域: {記錄時間: (區內可借車總數, 區內可還空位總數)}}，只保留區內每一站都有記錄的時間點
+    （可借、可還都是 0 的記錄視為車數不明，那個時間點整區都不算）"""
     raw = {}       # (區域, 時間) → {站號: (可借, 可還)}
     for path in log_files():
         with open(path, encoding="utf-8-sig") as f:
             for row in csv.DictReader(f):
+                rent, ret = int(row["可借車數"]), int(row["可還空位"])
+                if rent == 0 and ret == 0:   # 車數不明（2026-10-23 起官方資料整批回傳 0），不算
+                    continue
                 t = datetime.strptime(row["記錄時間"], "%Y-%m-%d %H:%M")
                 for z in station_zones.get(row["站號"], []):
-                    raw.setdefault((z, t), {})[row["站號"]] = (int(row["可借車數"]), int(row["可還空位"]))
+                    raw.setdefault((z, t), {})[row["站號"]] = (rent, ret)
     need = {}
     for sno, zs in station_zones.items():
         for z in zs:

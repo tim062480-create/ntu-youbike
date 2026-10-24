@@ -12,7 +12,7 @@ import webbrowser
 from datetime import datetime
 from pathlib import Path
 
-from youbike_collector import ZONES, fetch_stations
+from youbike_collector import ZONES, counts_valid, fetch_stations
 
 _HERE = Path(__file__).resolve().parent
 # 程式放在 src 資料夾時，資料在旁邊的 data、地圖存到 output
@@ -131,7 +131,8 @@ def main():
         zone = row["區域"]
         stations.append({"name": s["name"], "zone": zone, "dist": row["距離(公尺)"],
                          "lat": s["lat"], "lng": s["lng"], "total": s["total"],
-                         "rent": s["rent"], "ret": s["return"], "color": COLORS.get(zone, "#555")})
+                         "rent": s["rent"] if counts_valid(s) else "—",
+                         "ret": s["return"] if counts_valid(s) else "—", "color": COLORS.get(zone, "#555")})
 
     buildings = [{"name": b, "zone": z, "lat": lat, "lng": lng, "color": COLORS.get(z, "#555")}
                  for z, blds in ZONES.items() for b, (lat, lng) in blds.items()]
