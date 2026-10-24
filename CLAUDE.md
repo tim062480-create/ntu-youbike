@@ -2,14 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-這個 repo 有兩個互相獨立的專案，都用 GitHub Pages 發布、用 GitHub Actions 自動抓資料。使用者用繁體中文溝通，文件、註解、commit 訊息也都用繁體中文。
+這個 repo 有三個互相獨立的專案，都用 GitHub Pages 發布、用 GitHub Actions 自動抓資料。使用者用繁體中文溝通，文件、註解、commit 訊息也都用繁體中文。
 
 | 專案 | 位置 | 網址 |
 |---|---|---|
 | 台大 YouBike 擁擠預測 | repo 根目錄（`src/`、`data/`、`index.html`） | https://tim062480-create.github.io/ntu-youbike/ |
 | 附近抱石館地圖 | 全部在 `climbing/` | https://tim062480-create.github.io/ntu-youbike/climbing/ |
+| 新聞資料專案 | 全部在 `news/`，規則見 `news/CLAUDE.md` | — |
 
-兩個專案共用的只有 `.github/workflows/`（GitHub 規定的位置）。改其中一個專案時不要動到另一個的檔案。
+各專案共用的只有 `.github/workflows/`（GitHub 規定的位置）。改其中一個專案時不要動到另一個的檔案。
 
 ## 共同慣例
 
