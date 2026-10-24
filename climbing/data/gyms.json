@@ -1,6 +1,6 @@
 {
  "_說明": "由 scripts/enrich.py 產生，不要手動改；要改資料請改 gyms_seed.json",
- "generated": "2026-10-24 14:11",
+ "generated": "2026-10-24 14:16",
  "checked": "2026-10-24",
  "osm_ok": true,
  "sources": {
@@ -521,32 +521,32 @@
    "verify": [
     "明德店價格"
    ],
-   "lat": 25.1082962,
-   "lng": 121.5142184,
+   "lat": 25.1082592,
+   "lng": 121.5142392,
    "coord_source": "osm",
    "osm": {
-    "id": "node/13447526001",
-    "url": "https://www.openstreetmap.org/node/13447526001",
+    "id": "node/13417522409",
+    "url": "https://www.openstreetmap.org/node/13417522409",
     "name": "原岩攀岩館-明德店",
     "tags": {
      "addr:city": "臺北市",
      "addr:district": "北投區",
-     "addr:full": "臺北市北投區文林北路222號B1樓",
+     "addr:full": "112臺北市北投區文林北路222號B1樓",
      "addr:housenumber": "222",
      "addr:street": "文林北路",
-     "leisure": "fitness_centre",
-     "opening_hours": "Mo-Fr 12:00-23:00; Sa-Su 10:00-22:00",
-     "phone": "+886 2 28219988",
-     "website": "https://www.tupclimbing.tw/"
+     "fee": "yes",
+     "leisure": "sports_centre",
+     "opening_hours": "Mo-Fr 12:00-23:00",
+     "sport": "climbing"
     },
-    "dist_to_address_m": 102
+    "dist_to_address_m": 515
    },
    "coord_check": {
-    "lat": 25.1087094,
-    "lng": 121.5133136,
+    "lat": 25.1051566,
+    "lng": 121.5180389,
     "coord_source": "nominatim:road",
     "coord_query": "臺北市北投區文林北路",
-    "coord_match": "文林北路, 建民里, 北投區, 蘭雅, 臺北市, 112051, 臺灣"
+    "coord_match": "文林北路, 建民里, 北投區, 蘭雅, 臺北市, 112047, 臺灣"
    }
   },
   {
@@ -759,11 +759,11 @@
    "verify": [
     "新店店價格；抱石或上攀為主"
    ],
-   "lat": 24.9856719,
-   "lng": 121.5422127,
+   "lat": 24.9829405,
+   "lng": 121.5432895,
    "coord_source": "nominatim:road",
    "coord_query": "新北市新店區中興路三段",
-   "coord_match": "中興路三段, 信義里, 新店區, 大坪林, 新北市, 231006, 臺灣"
+   "coord_match": "中興路三段, 寶安里, 新店區, 大坪林, 新北市, 231006, 臺灣"
   },
   {
    "id": "tup-a19",
@@ -835,8 +835,8 @@
    "verify": [
     "是否已搬遷到 A22 老街溪站、新地址"
    ],
-   "lat": 25.0039617,
-   "lng": 121.2059456,
+   "lat": 25.0040726,
+   "lng": 121.2057451,
    "coord_source": "nominatim:road",
    "coord_query": "桃園市中壢區高鐵南路二段",
    "coord_match": "高鐵南路二段, 頂洽溪, 青溪里, 中壢區, 桃園市, 320014, 臺灣"
@@ -956,11 +956,11 @@
    "verify": [
     "價格（搜尋結果都沒有）"
    ],
-   "lat": 25.0531814,
-   "lng": 121.6067087,
+   "lat": 25.0530574,
+   "lng": 121.6059154,
    "coord_source": "nominatim:road",
    "coord_query": "臺北市南港區市民大道八段",
-   "coord_match": "市民大道八段, 南港里, 南港區, 三重埔, 臺北市, 115011, 臺灣"
+   "coord_match": "市民大道八段, 東明里, 南港區, 三重埔, 臺北市, 115011, 臺灣"
   },
   {
    "id": "kirin-nangang",
@@ -1000,11 +1000,11 @@
    "verify": [
     "價格、營業時間"
    ],
-   "lat": 25.0521753,
-   "lng": 121.6072066,
+   "lat": 25.0514209,
+   "lng": 121.6006277,
    "coord_source": "nominatim:road",
    "coord_query": "臺北市南港區忠孝東路七段",
-   "coord_match": "忠孝東路七段, 中南里, 南港區, 三重埔, 臺北市, 115011, 臺灣"
+   "coord_match": "忠孝東路七段, 新光里, 南港區, 三重埔, 臺北市, 115, 臺灣"
   },
   {
    "id": "redrock-shilin",
@@ -1161,7 +1161,7 @@
    "lng": 121.5102161,
    "coord_source": "nominatim:address",
    "coord_query": "臺北市大同區迪化街",
-   "coord_match": "迪化街商圈, 永樂里, 大同區, 大稻埕, 臺北市, 臺灣"
+   "coord_match": "迪化街商圈, 永昌街, 永樂里, 大同區, 大稻埕, 臺北市, 10344, 臺灣"
   },
   {
    "id": "camp4-taipei",
@@ -1251,14 +1251,14 @@
      "leisure": "sports_centre",
      "sport": "climbing"
     },
-    "dist_to_address_m": 9968
+    "dist_to_address_m": 14395
    },
    "coord_check": {
-    "lat": 25.0229479,
-    "lng": 121.5014834,
+    "lat": 24.984516,
+    "lng": 121.5696249,
     "coord_source": "nominatim:name",
     "coord_query": "小岩館 臺北市",
-    "coord_match": "珍燕小館, 萬青街, 壽德里, 萬華區, 東園, 臺北市, 10869, 臺灣"
+    "coord_match": "燕樓小館, 116, 木新路二段, 木新里, 文山區, 臺北市, 116, 臺灣"
    }
   },
   {
@@ -1598,11 +1598,11 @@
    "verify": [
     "S04（較舊）寫平日 300／假日 330／租鞋 80，S03（2025-05）寫 360／400／100，採用較新的"
    ],
-   "lat": 25.0346843,
-   "lng": 121.4455471,
+   "lat": 25.0235594,
+   "lng": 121.4150269,
    "coord_source": "nominatim:road",
    "coord_query": "新北市新莊區中正路",
-   "coord_match": "中正路, 忠孝里, 新莊區, 新庄(海山口), 新北市, 242009, 臺灣"
+   "coord_match": "中正路, 龍鳳里, 新莊區, 三角埔, 新北市, 242046, 臺灣"
   },
   {
    "id": "pogo-xinzhuang",
@@ -1831,11 +1831,11 @@
    "verify": [
     "完整票價"
    ],
-   "lat": 24.1791542,
-   "lng": 120.6347984,
+   "lat": 24.1853648,
+   "lng": 120.6370415,
    "coord_source": "nominatim:road",
    "coord_query": "臺中市西屯區環中路二段",
-   "coord_match": "環中路二段, 西墩里, 西屯區, 臺中七期, 臺中市, 407670, 臺灣"
+   "coord_match": "環中路二段, 西墩里, 西屯區, 水湳經貿園區, 臺中市, 407110, 臺灣"
   },
   {
    "id": "bplus-taiyuan",
@@ -2645,11 +2645,11 @@
    "verify": [
     "來源是約 2022 年的 Dcard，是否仍營業"
    ],
-   "lat": 24.6508939,
-   "lng": 121.7825909,
+   "lat": 24.6355247,
+   "lng": 121.7875669,
    "coord_source": "nominatim:road",
    "coord_query": "宜蘭縣冬山鄉冬山路二段",
-   "coord_match": "冬山路二段, 珍珠村, 冬山鄉, 宜蘭縣, 269, 臺灣"
+   "coord_match": "冬山路二段, 太和村, 冬山鄉, 宜蘭縣, 269, 臺灣"
   },
   {
    "id": "yoy-yuanshan",
@@ -2971,104 +2971,6 @@
    }
   },
   {
-   "osm": "node/4991509849",
-   "url": "https://www.openstreetmap.org/node/4991509849",
-   "name": "峭壁雄風地圖(攀岩低繞叉路走)",
-   "lat": 24.8760761,
-   "lng": 121.3707125,
-   "tags": {}
-  },
-  {
-   "osm": "node/5162170086",
-   "url": "https://www.openstreetmap.org/node/5162170086",
-   "name": "龍洞攀岩場 鐘塔",
-   "lat": 25.1114248,
-   "lng": 121.9225582,
-   "tags": {
-    "sport": "climbing"
-   }
-  },
-  {
-   "osm": "node/5162170087",
-   "url": "https://www.openstreetmap.org/node/5162170087",
-   "name": "龍洞攀岩場 黃金谷",
-   "lat": 25.1066675,
-   "lng": 121.9225729,
-   "tags": {
-    "sport": "climbing"
-   }
-  },
-  {
-   "osm": "node/5162170088",
-   "url": "https://www.openstreetmap.org/node/5162170088",
-   "name": "龍洞攀岩場 第一洞",
-   "lat": 25.1093035,
-   "lng": 121.9221032,
-   "tags": {
-    "sport": "climbing"
-   }
-  },
-  {
-   "osm": "node/5162170089",
-   "url": "https://www.openstreetmap.org/node/5162170089",
-   "name": "龍洞攀岩場 校門口",
-   "lat": 25.1129699,
-   "lng": 121.9217631,
-   "tags": {
-    "sport": "climbing"
-   }
-  },
-  {
-   "osm": "node/5162170090",
-   "url": "https://www.openstreetmap.org/node/5162170090",
-   "name": "龍洞攀岩場 長巷",
-   "lat": 25.1107253,
-   "lng": 121.9227337,
-   "tags": {
-    "sport": "climbing"
-   }
-  },
-  {
-   "osm": "node/5162170091",
-   "url": "https://www.openstreetmap.org/node/5162170091",
-   "name": "龍洞攀岩場 後門",
-   "lat": 25.104798,
-   "lng": 121.9227976,
-   "tags": {
-    "sport": "climbing"
-   }
-  },
-  {
-   "osm": "node/5162170092",
-   "url": "https://www.openstreetmap.org/node/5162170092",
-   "name": "龍洞攀岩場 音樂廳",
-   "lat": 25.1103535,
-   "lng": 121.922623,
-   "tags": {
-    "sport": "climbing"
-   }
-  },
-  {
-   "osm": "node/5162170093",
-   "url": "https://www.openstreetmap.org/node/5162170093",
-   "name": "龍洞攀岩場 第二洞",
-   "lat": 25.1085441,
-   "lng": 121.9222387,
-   "tags": {
-    "sport": "climbing"
-   }
-  },
-  {
-   "osm": "node/5162170094",
-   "url": "https://www.openstreetmap.org/node/5162170094",
-   "name": "龍洞攀岩場 大禮堂",
-   "lat": 25.1096866,
-   "lng": 121.9221507,
-   "tags": {
-    "sport": "climbing"
-   }
-  },
-  {
    "osm": "node/5377430582",
    "url": "https://www.openstreetmap.org/node/5377430582",
    "name": "",
@@ -3094,14 +2996,6 @@
     "opening_hours": "Mo-Su 09:00-22:00",
     "sport": "fitness;table_tennis;climbing;swimming;soccer;basketball;multi;tennis;gymnastics;equestrian;baseball;yoga;shooting;skateboard;exercise;canoe;billiards;volleyball;skiing;disc_golf"
    }
-  },
-  {
-   "osm": "node/5593526988",
-   "url": "https://www.openstreetmap.org/node/5593526988",
-   "name": "南港山攀岩路線登山口",
-   "lat": 25.0241069,
-   "lng": 121.5819062,
-   "tags": {}
   },
   {
    "osm": "node/5655150586",
@@ -3242,22 +3136,6 @@
    "tags": {}
   },
   {
-   "osm": "node/12358486373",
-   "url": "https://www.openstreetmap.org/node/12358486373",
-   "name": "得從事攀岩活動地區 (一線天 (迴旋谷))",
-   "lat": 22.6556487,
-   "lng": 120.2612565,
-   "tags": {}
-  },
-  {
-   "osm": "node/12681239911",
-   "url": "https://www.openstreetmap.org/node/12681239911",
-   "name": "得從事攀岩活動地區 (一線天 (迴旋谷))",
-   "lat": 22.6542318,
-   "lng": 120.2607247,
-   "tags": {}
-  },
-  {
    "osm": "node/13295191398",
    "url": "https://www.openstreetmap.org/node/13295191398",
    "name": "BABO PAPAK",
@@ -3277,24 +3155,6 @@
    }
   },
   {
-   "osm": "node/13417522409",
-   "url": "https://www.openstreetmap.org/node/13417522409",
-   "name": "原岩攀岩館-明德店",
-   "lat": 25.1082592,
-   "lng": 121.5142392,
-   "tags": {
-    "addr:city": "臺北市",
-    "addr:district": "北投區",
-    "addr:full": "112臺北市北投區文林北路222號B1樓",
-    "addr:housenumber": "222",
-    "addr:street": "文林北路",
-    "fee": "yes",
-    "leisure": "sports_centre",
-    "opening_hours": "Mo-Fr 12:00-23:00",
-    "sport": "climbing"
-   }
-  },
-  {
    "osm": "node/13437893337",
    "url": "https://www.openstreetmap.org/node/13437893337",
    "name": "",
@@ -3306,6 +3166,24 @@
    }
   },
   {
+   "osm": "node/13447526001",
+   "url": "https://www.openstreetmap.org/node/13447526001",
+   "name": "原岩攀岩館-明德店",
+   "lat": 25.1082962,
+   "lng": 121.5142184,
+   "tags": {
+    "addr:city": "臺北市",
+    "addr:district": "北投區",
+    "addr:full": "臺北市北投區文林北路222號B1樓",
+    "addr:housenumber": "222",
+    "addr:street": "文林北路",
+    "leisure": "fitness_centre",
+    "opening_hours": "Mo-Fr 12:00-23:00; Sa-Su 10:00-22:00",
+    "phone": "+886 2 28219988",
+    "website": "https://www.tupclimbing.tw/"
+   }
+  },
+  {
    "osm": "node/14272888127",
    "url": "https://www.openstreetmap.org/node/14272888127",
    "name": "階梯攀岩區",
@@ -3314,14 +3192,6 @@
    "tags": {
     "leisure": "playground"
    }
-  },
-  {
-   "osm": "way/136977257",
-   "url": "https://www.openstreetmap.org/way/136977257",
-   "name": "#4攀岩天梯",
-   "lat": 25.0236667,
-   "lng": 121.5850459,
-   "tags": {}
   },
   {
    "osm": "way/193248286",
@@ -3366,30 +3236,6 @@
    }
   },
   {
-   "osm": "way/233130268",
-   "url": "https://www.openstreetmap.org/way/233130268",
-   "name": "南港山峭壁攀岩線橫向步道",
-   "lat": 25.023644,
-   "lng": 121.5839183,
-   "tags": {}
-  },
-  {
-   "osm": "way/233130276",
-   "url": "https://www.openstreetmap.org/way/233130276",
-   "name": "#2攀岩",
-   "lat": 25.0268188,
-   "lng": 121.5865067,
-   "tags": {}
-  },
-  {
-   "osm": "way/233130286",
-   "url": "https://www.openstreetmap.org/way/233130286",
-   "name": "#3攀岩",
-   "lat": 25.0248905,
-   "lng": 121.5855055,
-   "tags": {}
-  },
-  {
    "osm": "way/286922783",
    "url": "https://www.openstreetmap.org/way/286922783",
    "name": "攀岩場地",
@@ -3399,30 +3245,6 @@
     "leisure": "pitch",
     "sport": "climbing"
    }
-  },
-  {
-   "osm": "way/319679956",
-   "url": "https://www.openstreetmap.org/way/319679956",
-   "name": "#5攀岩",
-   "lat": 25.0232494,
-   "lng": 121.5843984,
-   "tags": {}
-  },
-  {
-   "osm": "way/319679961",
-   "url": "https://www.openstreetmap.org/way/319679961",
-   "name": "#1攀岩",
-   "lat": 25.0287164,
-   "lng": 121.5883598,
-   "tags": {}
-  },
-  {
-   "osm": "way/319737754",
-   "url": "https://www.openstreetmap.org/way/319737754",
-   "name": "南港山峭壁電視塔攀岩線",
-   "lat": 25.0284192,
-   "lng": 121.5858784,
-   "tags": {}
   },
   {
    "osm": "way/335698567",
@@ -3488,14 +3310,6 @@
    }
   },
   {
-   "osm": "way/399020621",
-   "url": "https://www.openstreetmap.org/way/399020621",
-   "name": "攀岩段",
-   "lat": 25.0123647,
-   "lng": 121.5564377,
-   "tags": {}
-  },
-  {
    "osm": "way/402105183",
    "url": "https://www.openstreetmap.org/way/402105183",
    "name": "攀岩場",
@@ -3505,58 +3319,6 @@
     "leisure": "sports_centre",
     "sport": "climbing"
    }
-  },
-  {
-   "osm": "way/412969272",
-   "url": "https://www.openstreetmap.org/way/412969272",
-   "name": "南港山峭壁電視塔攀岩線",
-   "lat": 25.0272892,
-   "lng": 121.5863009,
-   "tags": {}
-  },
-  {
-   "osm": "way/421731155",
-   "url": "https://www.openstreetmap.org/way/421731155",
-   "name": "攀岩垂降練習場",
-   "lat": 25.1258857,
-   "lng": 121.5166256,
-   "tags": {
-    "leisure": "common"
-   }
-  },
-  {
-   "osm": "way/421731169",
-   "url": "https://www.openstreetmap.org/way/421731169",
-   "name": "北投天然攀岩場",
-   "lat": 25.1347709,
-   "lng": 121.5148323,
-   "tags": {
-    "leisure": "common"
-   }
-  },
-  {
-   "osm": "way/425714408",
-   "url": "https://www.openstreetmap.org/way/425714408",
-   "name": "2號攀岩繩索30米",
-   "lat": 24.8755732,
-   "lng": 121.3696389,
-   "tags": {}
-  },
-  {
-   "osm": "way/425714411",
-   "url": "https://www.openstreetmap.org/way/425714411",
-   "name": "1號攀岩繩索30公尺",
-   "lat": 24.8756417,
-   "lng": 121.369801,
-   "tags": {}
-  },
-  {
-   "osm": "way/425714413",
-   "url": "https://www.openstreetmap.org/way/425714413",
-   "name": "峭壁雄風攀岩繩索",
-   "lat": 24.8753947,
-   "lng": 121.3692256,
-   "tags": {}
   },
   {
    "osm": "way/452709117",
@@ -3585,14 +3347,6 @@
     "leisure": "pitch",
     "sport": "climbing"
    }
-  },
-  {
-   "osm": "way/510047685",
-   "url": "https://www.openstreetmap.org/way/510047685",
-   "name": "獨立峰攀岩繩索",
-   "lat": 24.8754736,
-   "lng": 121.3698909,
-   "tags": {}
   },
   {
    "osm": "way/527264957",
@@ -3659,22 +3413,6 @@
     "leisure": "sports_centre",
     "sport": "climbing;溜索"
    }
-  },
-  {
-   "osm": "way/700650798",
-   "url": "https://www.openstreetmap.org/way/700650798",
-   "name": "南港山峭壁攀岩線橫向步道",
-   "lat": 25.0261182,
-   "lng": 121.5860977,
-   "tags": {}
-  },
-  {
-   "osm": "way/700650801",
-   "url": "https://www.openstreetmap.org/way/700650801",
-   "name": "#4攀岩天梯",
-   "lat": 25.023777,
-   "lng": 121.5849528,
-   "tags": {}
   },
   {
    "osm": "way/733467687",
@@ -3757,14 +3495,6 @@
    "tags": {}
   },
   {
-   "osm": "way/1266231362",
-   "url": "https://www.openstreetmap.org/way/1266231362",
-   "name": "攀岩段",
-   "lat": 25.0121695,
-   "lng": 121.5564432,
-   "tags": {}
-  },
-  {
    "osm": "way/1377997014",
    "url": "https://www.openstreetmap.org/way/1377997014",
    "name": "攀岩運動區",
@@ -3774,14 +3504,6 @@
     "leisure": "sports_centre",
     "sport": "climbing"
    }
-  },
-  {
-   "osm": "way/1413619748",
-   "url": "https://www.openstreetmap.org/way/1413619748",
-   "name": "攀岩段",
-   "lat": 25.0126209,
-   "lng": 121.5582651,
-   "tags": {}
   },
   {
    "osm": "way/1467096805",
