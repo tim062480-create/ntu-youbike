@@ -11,4 +11,4 @@
 
 ---
 
-另一個專案：**附近抱石館地圖**（手機定位、價格、交通與 YouBike 建議），全部放在 [`climbing/`](climbing/README.md)。
+另一個專案：**附近抱石館地圖** 在獨立的 repo [tim062480-create/climbing-map](https://github.com/tim062480-create/climbing-map)。
