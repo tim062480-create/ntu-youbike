@@ -8,3 +8,7 @@
 - YouBike 資料由 GitHub Actions 每 2 分鐘自動收集，存在 `data/youbike_log/`
 
 資料來源：臺大課程網、臺北市 YouBike 2.0 即時資訊、Open-Meteo 天氣資料。
+
+---
+
+另一個專案：**附近抱石館地圖** 在獨立的 repo [tim062480-create/climbing-map](https://github.com/tim062480-create/climbing-map)。
