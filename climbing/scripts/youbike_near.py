@@ -8,9 +8,10 @@
   climbing/data/youbike_log/日期.csv     館附近站點的車數記錄（一天一個檔）
   climbing/data/youbike_pattern.json    每站「平日／假日 × 每 30 分鐘」的平均可借、可還（網頁做到達時預測）
 
-資料來源（依序嘗試）：
-  1. YouBike 官網用的全台站點 JSON（apis.youbike.com.tw，非正式公開 API，格式可能變）
-  2. 臺北市 YouBike 2.0 即時資訊（政府資料開放平臺，只有臺北市）
+資料來源：
+  1. YouBike 官網用的全台站點 JSON（apis.youbike.com.tw，非正式公開 API，格式可能變）：只用站點位置。
+     它的 available_spaces／empty_spaces 不是即時車數（2026-10-24 實測 121 站有 94 站兩個都是 0），所以不用。
+  2. 臺北市 YouBike 2.0 即時資訊（政府資料開放平臺）：車數只有臺北市有。
 只用 Python 內建套件。
 用法：python climbing/scripts/youbike_near.py [--stations]
 """
@@ -78,12 +79,13 @@ def parse(raw, source):
         except (TypeError, ValueError):
             continue
         name = str(get(s, "name_tw", "sna", "StationName_Zh_tw", "name", default=""))
+        counts_ok = source != "youbike-national"
         out[sno] = {
             "name": name.replace("YouBike2.0_", ""),
             "lat": round(lat, 6), "lng": round(lng, 6),
             "total": to_int(get(s, "parking_spaces", "total", "tot", "Quantity")),
-            "rent": to_int(get(s, "available_spaces", "available_rent_bikes", "sbi", "AvailableRentBikes")),
-            "ret": to_int(get(s, "empty_spaces", "available_return_bikes", "bemp", "AvailableReturnBikes")),
+            "rent": to_int(get(s, "available_rent_bikes", "sbi", "AvailableRentBikes")) if counts_ok else None,
+            "ret": to_int(get(s, "available_return_bikes", "bemp", "AvailableReturnBikes")) if counts_ok else None,
             "t": str(get(s, "updated_at", "srcUpdateTime", "mday", "time", default="")),
             "src": source,
         }
@@ -103,7 +105,7 @@ def fetch_all():
             continue
         used.append(name)
         for sno, s in got.items():
-            # 全台資料沒有車數時，用臺北市的車數補上
+            # 全台資料沒有車數，用臺北市的車數補上
             if sno in stations and stations[sno]["rent"] is None:
                 stations[sno].update({k: s[k] for k in ("rent", "ret", "total", "t", "src") if s[k] is not None})
             else:

@@ -49,6 +49,8 @@ area["ISO3166-1"="TW"][admin_level=2]->.tw;
 out center tags;
 """
 TW_BBOX = (21.8, 119.3, 25.4, 122.1)   # 南、西、北、東（含澎湖、金門以外的本島周邊）
+# 戶外岩場、登山步道上的攀岩點，不是室內館
+OUTDOOR_NAME = re.compile(r"龍洞|步道|繩索|攀岩線|登山口|天梯|攀岩段|峭壁|垂降|天然|迴旋谷|^#")
 OUTDOOR_TAGS = {("natural", "cliff"), ("climbing", "crag"), ("climbing", "route"),
                 ("climbing", "route_bottom"), ("climbing", "route_top"), ("natural", "peak")}
 
@@ -98,7 +100,7 @@ def osm_place(el):
         "name": tags.get("name") or tags.get("name:en") or "",
         "names": [n for n in names if n],
         "lat": lat, "lng": lng,
-        "outdoor": any((k, v) in OUTDOOR_TAGS for k, v in tags.items()),
+        "outdoor": any((k, v) in OUTDOOR_TAGS for k, v in tags.items()) or bool(OUTDOOR_NAME.search(tags.get("name", ""))),
         "tags": {k: v for k, v in tags.items()
                  if k in ("sport", "leisure", "climbing", "website", "contact:website", "phone", "contact:phone",
                           "opening_hours", "addr:city", "addr:district", "addr:street", "addr:housenumber",
@@ -134,7 +136,9 @@ def address_candidates(gym):
     addr = gym.get("address", "") or ""
     addr = re.sub(r"（.*?）|\(.*?\)", "", addr).strip()
     out = []
-    if addr and "待確認" not in addr:
+    # 只有縣市、行政區（例如「新北市新莊區」）的地址會定位到區中心，不能用
+    rest = addr.replace(gym.get("city", ""), "", 1).replace(gym.get("district", "") or "\0", "", 1)
+    if addr and "待確認" not in addr and rest.strip():
         out.append(("address", addr))
         no_floor = re.sub(r"(B\d+|\d+樓|\d+F|地下\S*樓)$", "", addr, flags=re.I).strip()
         if no_floor != addr:
