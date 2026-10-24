@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-這個 repo 有三個互相獨立的專案，都用 GitHub Pages 發布、用 GitHub Actions 自動抓資料。使用者用繁體中文溝通，文件、註解、commit 訊息也都用繁體中文。
+這個 repo 有三個互相獨立的專案；YouBike 和抱石地圖用 GitHub Pages 發布、用 GitHub Actions 自動抓資料。使用者用繁體中文溝通，文件、註解、commit 訊息也都用繁體中文。
 
 | 專案 | 位置 | 網址 |
 |---|---|---|
